@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Attendance</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2ff;
+      text-align: center;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 400px;
+      margin: 30px auto;
+    }
+    input, button {
+      padding: 12px;
+      margin: 8px;
+      border-radius: 7px;
+    }
+    button {
+      background: #405de6;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Smart Attendance</h1>
+    <p>QR Code Based Attendance System</p>
+    <input id="name" placeholder="Student Name">
+    <input id="roll" placeholder="Roll Number">
+    <button onclick="markAttendance()">Mark Attendance</button>
+    <p id="msg"></p>
+    <h3>Attendance List</h3>
+    <ul id="list"></ul>
+  </div>
+
+  <script>
+    function markAttendance() {
+      const name = document.getElementById("name").value.trim();
+      const roll = document.getElementById("roll").value.trim();
+
+      if (!name || !roll) {
+        document.getElementById("msg").textContent =
+          "Enter name and roll number";
+        return;
+      }
+
+      const li = document.createElement("li");
+      li.textContent = name + " - " + roll;
+      document.getElementById("list").appendChild(li);
+      document.getElementById("msg").textContent =
+        "Attendance marked successfully!";
+      document.getElementById("name").value = "";
+      document.getElementById("roll").value = "";
+    }
+  </script>
+</body>
+</html>
